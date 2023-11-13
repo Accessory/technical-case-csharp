@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "WebApi": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DATABASE_SERVER": "localhost",
+        "DATABASE_DATABASE": "RobotSharp",
+        "DATABASE_USER": "tibber",
+        "DATABASE_PASSWORD": "tibber"
+      },
+      "applicationUrl": "http://localhost:5000"
+    }
+  }
+}
