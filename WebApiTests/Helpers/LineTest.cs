@@ -171,4 +171,46 @@ public class LineTest
         Assert.AreEqual(1, result);
     }
     
+    [Fact]
+    public void IntersectionCase2()
+    {
+        var p1 = new Position(){X = -4, Y = 10};
+        var p2 = new Position(){X = 0, Y = 10};
+        var p3 = new Position(){X = -5, Y = 15};
+        var p4 = new Position(){X = -5, Y = 5};
+
+        var l1 = new Line(p1, p2);
+        var l2 = new Line(p3, p4);
+        var result = l1.Intersections(l2);
+        Assert.AreEqual(0, result);
+    }
+    
+    [Fact]
+    public void IntersectionCase3()
+    {
+        var p1 = new Position(){X = 15, Y = 15};
+        var p2 = new Position(){X = 15, Y = 24};
+        var p3 = new Position(){X = 15, Y = 25};
+        var p4 = new Position(){X = 19, Y = 25};
+
+        var l1 = new Line(p1, p2);
+        var l2 = new Line(p3, p4);
+        var result = l1.Intersections(l2);
+        Assert.AreEqual(0, result);
+    }
+    
+    [Fact]
+    public void IntersectionCase4()
+    {
+        var p1 = new Position(){X = 20, Y = 25};
+        var p2 = new Position(){X = 20, Y = 21};
+        var p3 = new Position(){X = 10, Y = 22};
+        var p4 = new Position(){X = 17, Y = 22};
+
+        var l1 = new Line(p1, p2);
+        var l2 = new Line(p3, p4);
+        var result = l1.Intersections(l2);
+        Assert.AreEqual(0, result);
+    }
+    
 }

@@ -40,7 +40,7 @@ public class Line
     {
         var thisStartX = Math.Min(this.Start.X, this.End.X);
         var thisEndX = Math.Max(this.Start.X, this.End.X);
-        if (thisStartX > other.Start.X && thisEndX < other.Start.X)
+        if (thisStartX > other.Start.X || thisEndX < other.Start.X)
         {
             return false;
         }

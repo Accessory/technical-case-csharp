@@ -26,7 +26,7 @@ public class JobController : ControllerBase
     [HttpPost("enter-path")]
     public async Task<IActionResult> EnterPath(EnterPathRequest enterPath)
     {
-        var job = PathUtil.CreateJobFromEnterPathRequest3(enterPath);
+        var job = PathUtil.CreateJobFromEnterPathRequest4(enterPath);
         job = await _jobService.Create(job);
         return Ok(job);
     }

@@ -267,6 +267,11 @@ internal static class PathUtil
             {
                 var l2 = lines[j];
                 var toAdd = l1.Intersections(l2);
+                // if (toAdd == 1)
+                // {
+                //     Console.WriteLine("Intersection: " + l1.Start.X + " " + l1.Start.Y + " " + l1.End.X + " " + l1.End.Y +
+                //                       " " + l2.Start.X + " " + l2.Start.Y + " " + l2.End.X + " " + l2.End.Y);
+                // }
                 intersections += toAdd;
             }
         }
@@ -330,8 +335,8 @@ internal static class PathUtil
             Commands = request.Commands.Count
         };
     }
-    
-    
+
+
     internal static Job CreateJobFromEnterPathRequest6(EnterPathRequest request)
     {
         var watch = Stopwatch.StartNew();
