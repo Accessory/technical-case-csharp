@@ -110,6 +110,7 @@ internal static class PathUtil
         };
     }
 
+    // Inspired by https://github.com/dscherdi/tibber_challenge
     internal static Job CreateJobFromEnterPathRequest3(EnterPathRequest request)
     {
         var watch = Stopwatch.StartNew();
