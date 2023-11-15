@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Reflection;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Newtonsoft.Json;
 using WebApi.Controllers;
 using WebApi.Entities;
 using WebApi.Models.Jobs;
 using WebApi.Services;
 using Xunit;
+using Xunit.Abstractions;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace WebApiTests.Controllers
@@ -16,13 +19,12 @@ namespace WebApiTests.Controllers
         private readonly JobController _sut;
         private readonly Mock<IJobService> _jobRepositoryMock;
 
-        public JobControllerTests()
+        public JobControllerTests(ITestOutputHelper output)
         {
             
             _jobRepositoryMock = new Mock<IJobService>();
             _sut = new JobController(_jobRepositoryMock.Object);
         }
-
 
         [Fact]
         public void HalloWeltTest()

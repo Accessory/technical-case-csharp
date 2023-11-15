@@ -6,6 +6,7 @@
         <RootNamespace>WebApi</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
+        <PackageReference Include="Advanced.Algorithms" Version="1.0.0" />
         <PackageReference Include="AutoMapper" Version="12.0.1" />
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
         <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
