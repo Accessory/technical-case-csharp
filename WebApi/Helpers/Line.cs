@@ -13,27 +13,18 @@ public class Line
         End = end;
     }
 
-    public Int64 Intersections(Line other)
+    public long Intersections(Line other)
     {
         var selfIsHorizontal = this.IsHorizontal();
         var otherIsHorizontal = other.IsHorizontal();
 
-        if (selfIsHorizontal && otherIsHorizontal)
+        return selfIsHorizontal switch
         {
-            return Start.Y == other.Start.Y ? other.GetHorizontalOverlap(this) : 0;
-        }
-        
-        if (!selfIsHorizontal && !otherIsHorizontal)
-        {
-            return Start.X == other.Start.X ? GetVerticalOverlap(other) : 0;
-        }
-
-        if (selfIsHorizontal && !otherIsHorizontal)
-        {
-            return this.HasIntersection(other) ? 1 : 0;
-        }
-
-        return other.HasIntersection(this) ? 1 : 0;
+            true when otherIsHorizontal => Start.Y == other.Start.Y ? other.GetHorizontalOverlap(this) : 0,
+            false when !otherIsHorizontal => Start.X == other.Start.X ? GetVerticalOverlap(other) : 0,
+            true when !otherIsHorizontal => this.HasIntersection(other) ? 1 : 0,
+            _ => other.HasIntersection(this) ? 1 : 0
+        };
     }
 
     private bool HasIntersection(Line other)
@@ -51,7 +42,7 @@ public class Line
         return otherStartY < this.Start.Y && this.Start.Y < otherEndY;
     }
 
-    private Int64 GetVerticalOverlap(Line other)
+    private long GetVerticalOverlap(Line other)
     {
         var start = Math.Min(Start.Y, End.Y);
         var end = Math.Max(Start.Y, End.Y);
@@ -61,7 +52,7 @@ public class Line
         return Overlapping(start, end, otherStart, otherEnd);
     }
 
-    private Int64 GetHorizontalOverlap(Line other)
+    private long GetHorizontalOverlap(Line other)
     {
         var start = Math.Min(Start.X, End.X);
         var end = Math.Max(Start.X, End.X);
@@ -117,9 +108,9 @@ public class Line
         if(this.IsHorizontal() == other.IsHorizontal())
         {
             long rtn = 0;
-            for (long x = otherStartX; x <= otherEndX; x++)
+            for (var x = otherStartX; x <= otherEndX; x++)
             {
-                for (long y = otherStartY; y <= otherEndY; y++)
+                for (var y = otherStartY; y <= otherEndY; y++)
                 {
                     if (startX <= x && x <= endX && startY <= y && y <= endY)
                     {

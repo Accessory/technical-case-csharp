@@ -2,10 +2,10 @@
 
 public struct Position
 {
-    public Int64 X { get; set; }
-    public Int64 Y { get; set; }
+    public long X { get; set; }
+    public long Y { get; set; }
 
-    public long ToInt64()
+    public long Tolong()
     {
         return X + Y * 200_001;
     }

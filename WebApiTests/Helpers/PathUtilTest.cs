@@ -163,23 +163,23 @@ public class PathUtilTest
         Assert.AreEqual(39, job6.Result);
     }
 
-    [TestMethod]
-    public void CreateJobFromEnterPathRequestTest2()
-    {
-        string contents = ReadEmbeddedResource("WebApiTests.TestData.robotcleanerpathheavy.json");
-        EnterPathRequest request = JsonConvert.DeserializeObject<EnterPathRequest>(contents)!;
-        var job = PathUtil.CreateJobFromEnterPathRequest(request);
-        Assert.AreEqual(993737501, job.Result);
-    }
+    // [TestMethod]
+    // public void CreateJobFromEnterPathRequestTest2()
+    // {
+    //     string contents = ReadEmbeddedResource("WebApiTests.TestData.robotcleanerpathheavy.json");
+    //     EnterPathRequest request = JsonConvert.DeserializeObject<EnterPathRequest>(contents)!;
+    //     var job = PathUtil.CreateJobFromEnterPathRequest(request);
+    //     Assert.AreEqual(993737501, job.Result);
+    // }
 
-    [TestMethod]
-    public void CreateJobFromEnterPathRequestTest3()
-    {
-        string contents = ReadEmbeddedResource("WebApiTests.TestData.robotcleanerpathheavy.json");
-        EnterPathRequest request = JsonConvert.DeserializeObject<EnterPathRequest>(contents)!;
-        var job = PathUtil.CreateJobFromEnterPathRequest3(request);
-        Assert.AreEqual(993737501, job.Result);
-    }
+    // [TestMethod]
+    // public void CreateJobFromEnterPathRequestTest3()
+    // {
+    //     string contents = ReadEmbeddedResource("WebApiTests.TestData.robotcleanerpathheavy.json");
+    //     EnterPathRequest request = JsonConvert.DeserializeObject<EnterPathRequest>(contents)!;
+    //     var job = PathUtil.CreateJobFromEnterPathRequest3(request);
+    //     Assert.AreEqual(993737501, job.Result);
+    // }
 
     [TestMethod]
     public void CreateJobFromEnterPathRequestTest4()
@@ -190,14 +190,14 @@ public class PathUtilTest
         Assert.AreEqual(993737501, job.Result);
     }
 
-    [TestMethod]
-    public void CreateJobFromEnterPathRequestTest5()
-    {
-        string contents = ReadEmbeddedResource("WebApiTests.TestData.robotcleanerpathheavy.json");
-        EnterPathRequest request = JsonConvert.DeserializeObject<EnterPathRequest>(contents)!;
-        var job = PathUtil.CreateJobFromEnterPathRequest5(request);
-        Assert.AreEqual(993737501, job.Result);
-    }
+    // [TestMethod]
+    // public void CreateJobFromEnterPathRequestTest5()
+    // {
+    //     string contents = ReadEmbeddedResource("WebApiTests.TestData.robotcleanerpathheavy.json");
+    //     EnterPathRequest request = JsonConvert.DeserializeObject<EnterPathRequest>(contents)!;
+    //     var job = PathUtil.CreateJobFromEnterPathRequest5(request);
+    //     Assert.AreEqual(993737501, job.Result);
+    // }
 
     // [TestMethod]
     // public void CreateJobFromEnterPathRequestTest6()

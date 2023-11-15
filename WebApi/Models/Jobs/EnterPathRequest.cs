@@ -10,8 +10,8 @@ public class EnterPathRequest
     }
 
     [Required]
-    public Position Start { get; set; }
+    public Position Start { get; init; }
 
     [Required]
-    public List<Command> Commands { get; set; }
+    public List<Command> Commands { get; }
 }

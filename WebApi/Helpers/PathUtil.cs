@@ -10,12 +10,12 @@ internal static class PathUtil
 {
     internal static Job CreateJobFromEnterPathRequest(EnterPathRequest request)
     {
-        Stopwatch watch = new Stopwatch();
+        var watch = new Stopwatch();
         watch.Start();
         var currentPosition = request.Start;
 
         var sum = request.Commands.Sum(r => r.Steps);
-        var positions = new List<Int64>(sum + 1) { currentPosition.ToInt64() };
+        var positions = new List<long>(sum + 1) { currentPosition.Tolong() };
         foreach (var command in request.Commands)
         {
             for (var i = 0; i < command.Steps; i++)
@@ -36,7 +36,7 @@ internal static class PathUtil
                         break;
                 }
 
-                positions.Add(currentPosition.ToInt64());
+                positions.Add(currentPosition.Tolong());
             }
         }
 
@@ -44,7 +44,7 @@ internal static class PathUtil
 
         var lastNumber = long.MaxValue;
         var doubleNumber = 0;
-        for (int i = positions.Count - 1; i >= 0; i--)
+        for (var i = positions.Count - 1; i >= 0; i--)
         {
             if (lastNumber == positions[i])
             {
@@ -66,7 +66,7 @@ internal static class PathUtil
 
     internal static Job CreateJobFromEnterPathRequest2(EnterPathRequest request)
     {
-        Stopwatch watch = new Stopwatch();
+        var watch = new Stopwatch();
         watch.Start();
         var currentPosition = request.Start;
 
@@ -259,11 +259,11 @@ internal static class PathUtil
             }
         }
 
-        Int64 intersections = 0;
-        for (int i = 0; i < lines.Count; i++)
+        long intersections = 0;
+        for (var i = 0; i < lines.Count; i++)
         {
             var l1 = lines[i];
-            for (int j = i + 1; j < lines.Count; j++)
+            for (var j = i + 1; j < lines.Count; j++)
             {
                 var l2 = lines[j];
                 var toAdd = l1.Intersections(l2);
@@ -377,11 +377,11 @@ internal static class PathUtil
             }
         }
 
-        Int64 intersections = 0;
-        for (int i = 0; i < lines.Count; i++)
+        long intersections = 0;
+        for (var i = 0; i < lines.Count; i++)
         {
             var l1 = lines[i];
-            for (int j = i + 1; j < lines.Count; j++)
+            for (var j = i + 1; j < lines.Count; j++)
             {
                 var l2 = lines[j];
                 var toAdd = l1.Intersections2(l2);
