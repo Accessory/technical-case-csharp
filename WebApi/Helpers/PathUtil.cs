@@ -113,7 +113,7 @@ internal static class PathUtil
     internal static Job CreateJobFromEnterPathRequest3(EnterPathRequest request)
     {
         var watch = Stopwatch.StartNew();
-        (long X, long Y) currentPoint = (request.Start.X, request.Start.Y);
+        var currentPoint = (request.Start.X, request.Start.Y);
 
         var lines = new List<Advanced.Algorithms.Geometry.Line>();
         var edges = new HashSet<(long, long)>
@@ -121,7 +121,7 @@ internal static class PathUtil
             (currentPoint.X, currentPoint.Y)
         };
 
-        int count = 1;
+        var count = 1;
         foreach (var command in request.Commands)
         {
             // Calculate the movement
@@ -144,8 +144,8 @@ internal static class PathUtil
                     throw new ArgumentException($"Invalid direction: {command.Direction}");
             }
 
-            long endX = currentPoint.X + (dx * command.Steps);
-            long endY = currentPoint.Y + (dy * command.Steps);
+            var endX = currentPoint.X + (dx * command.Steps);
+            var endY = currentPoint.Y + (dy * command.Steps);
 
             (long X, long Y) nextPoint = (endX, endY);
 
@@ -155,28 +155,21 @@ internal static class PathUtil
             if (newLine.IsHorizontal == lines.LastOrDefault()?.IsHorizontal ||
                 newLine.IsVertical == lines.LastOrDefault()?.IsVertical)
             {
-                // Get the last line
                 var lastLine = lines.LastOrDefault();
-
-                // Check if the lines overlap
                 if (lastLine != null && newLine.IsHorizontal && newLine.Left.Y == lastLine.Left.Y)
                 {
-                    // The lines are horizontal and on the same line, check if their x-ranges overlap
                     if (Math.Max(newLine.Left.X, lastLine.Left.X) <= Math.Min(newLine.Right.X, lastLine.Right.X))
                     {
-                        // The x-ranges overlap, so calculate the length of the non-overlapping part of the new line
-                        int nonOverlappingLength =
+                        var nonOverlappingLength =
                             Math.Abs((int)(newLine.Right.X - Math.Max(newLine.Left.X, lastLine.Right.X)));
                         count += nonOverlappingLength;
                     }
                 }
                 else if (lastLine != null && newLine.IsVertical && newLine.Left.X == lastLine.Left.X)
                 {
-                    // The lines are vertical and on the same line, check if their y-ranges overlap
                     if (Math.Max(newLine.Left.Y, lastLine.Left.Y) <= Math.Min(newLine.Right.Y, lastLine.Right.Y))
                     {
-                        // The y-ranges overlap, so calculate the length of the non-overlapping part of the new line
-                        int nonOverlappingLength =
+                        var nonOverlappingLength =
                             Math.Abs((int)(newLine.Right.Y - Math.Max(newLine.Left.Y, lastLine.Right.Y)));
                         count += nonOverlappingLength;
                     }
@@ -199,7 +192,6 @@ internal static class PathUtil
             lines.Add(newLine);
         }
 
-        // offset all points to positive
         var min = (edges.Min(x => x.Item1), edges.Min(x => x.Item2));
         long offset = 0;
         if (min.Item1 < 0 || min.Item2 < 0)

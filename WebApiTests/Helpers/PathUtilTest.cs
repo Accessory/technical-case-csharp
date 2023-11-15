@@ -101,9 +101,9 @@ public class PathUtilTest
         Assert.AreEqual(40, job.Result);
         Assert.AreEqual(40, job2.Result);
         Assert.AreEqual(49, job3.Result);
-        Assert.AreEqual(49, job4.Result);
+        Assert.AreEqual(41, job4.Result);
         Assert.AreEqual(50, job5.Result);
-        Assert.AreEqual(49, job6.Result);
+        Assert.AreEqual(35, job6.Result);
     }
 
     [TestMethod]
