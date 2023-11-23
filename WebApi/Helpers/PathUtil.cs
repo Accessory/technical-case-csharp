@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Diagnostics;
-using Advanced.Algorithms.Geometry;
+﻿using System.Diagnostics;
 using WebApi.Entities;
 using WebApi.Models.Jobs;
 

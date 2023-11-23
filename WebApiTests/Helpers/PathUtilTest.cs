@@ -37,12 +37,8 @@ public class PathUtilTest
             Start = new Position() { X = 0, Y = 0 }
         };
 
-        var job4 = PathUtil.CreateJobFromEnterPathRequest(request);
-        var job5 = PathUtil.CreateJobFromEnterPathRequest(request);
-        var job6 = PathUtil.CreateJobFromEnterPathRequest(request);
-        Assert.AreEqual(800001, job4.Result);
-        Assert.AreEqual(800001, job5.Result);
-        Assert.AreEqual(800001, job6.Result);
+        var job = PathUtil.CreateJobFromEnterPathRequest(request);
+        Assert.AreEqual(800001, job.Result);
     }
     
     [TestMethod]
@@ -66,8 +62,8 @@ public class PathUtilTest
             Start = new Position() { X = 0, Y = 0 }
         };
 
-        var job4 = PathUtil.CreateJobFromEnterPathRequest(request);
-        Assert.AreEqual(100001, job4.Result);
+        var job = PathUtil.CreateJobFromEnterPathRequest(request);
+        Assert.AreEqual(100001, job.Result);
     }
 
     [TestMethod]
@@ -85,8 +81,8 @@ public class PathUtilTest
             Start = new Position() { X = 0, Y = 0 }
         };
 
-        var job4 = PathUtil.CreateJobFromEnterPathRequest(request);
-        Assert.AreEqual(41, job4.Result);
+        var job = PathUtil.CreateJobFromEnterPathRequest(request);
+        Assert.AreEqual(41, job.Result);
     }
 
     [TestMethod]
@@ -122,7 +118,7 @@ public class PathUtilTest
             Start = new Position() { X = 15, Y = 15 }
         };
 
-        var job4 = PathUtil.CreateJobFromEnterPathRequest(request);
-        Assert.AreEqual(46, job4.Result);
+        var job = PathUtil.CreateJobFromEnterPathRequest(request);
+        Assert.AreEqual(46, job.Result);
     }
 }
