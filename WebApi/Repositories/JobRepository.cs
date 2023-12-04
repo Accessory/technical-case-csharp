@@ -18,13 +18,12 @@ public class JobRepository : IJobRepository
         _context = context;
     }
 
- public async Task<Job> Create(Job job)
+    public async Task<Job> Create(Job job)
     {
         using var connection = _context.CreateConnection();
-        job.Id = (long)(await connection.ExecuteScalarAsync("Select nextval('job_id_seq')"))!;
-        
-        const string sql = "INSERT INTO public.job(id, \"timestamp\", commands, result, duration) VALUES (@Id, @TimeStamp, @Commands, @Result, @Duration);";
-        await connection.ExecuteAsync(sql, job);
+        const string sql = "INSERT INTO public.job(\"timestamp\", commands, result, duration) VALUES (@TimeStamp, @Commands, @Result, @Duration) RETURNING *;";
+        long jobId = (long) (await connection.ExecuteScalarAsync(sql, job)!)!;
+        job.Id = jobId;
         return job;
     }
 }

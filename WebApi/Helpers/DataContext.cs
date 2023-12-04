@@ -56,7 +56,7 @@ public class DataContext
                                CREATE TABLE IF NOT EXISTS public.job
                            (
                                id BIGSERIAL NOT NULL,
-                               "timestamp" timestamp without time zone NOT NULL,
+                               "timestamp" timestamp without time zone NOT NULL DEFAULT NOW(),
                                commands bigint NOT NULL,
                                result bigint NOT NULL,
                                duration double precision NOT NULL,
